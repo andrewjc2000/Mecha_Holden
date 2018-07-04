@@ -42,7 +42,6 @@ def activityVisual(person, timeInterval): #method for creating the graph of a pe
         persony = True
     
     
-    
     if (timeInterval == "Day"):
         x = 0
     if (timeInterval == "Month"):
@@ -61,7 +60,6 @@ def activityVisual(person, timeInterval): #method for creating the graph of a pe
         date = list(filter(None, date))
     
     date1 = date
-    
     
     
     newLen = len(date)
@@ -84,7 +82,7 @@ def activityVisual(person, timeInterval): #method for creating the graph of a pe
     plt.bar(range(len(dateDict)), list(dateDict.values()), align = 'center')
     plt.xticks(range(len(dateDict)), list(dateDict.keys()))
     plt.title(person + "'s Number of Messages in " + channel +" Per " + timeInterval, fontsize = 12)
-    plt.savefig('E:\Python\Discord bot\\Pictures\\picture.png')
+    plt.savefig(r"Pictures\picture.png")
     plt.close()
 
     
