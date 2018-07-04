@@ -16,14 +16,9 @@ from random import randint
 
 #Dear anyone who reads this. I'm so sorry. 
 
-
 df = pd.read_csv("GT22general.csv")
 
-
-
 def activityVisual(person, timeInterval): #method for creating the graph of a person's activity
-
-
     nametemp = df.Author
     name = nametemp.tolist()
     datetemp =df.Date
@@ -37,7 +32,6 @@ def activityVisual(person, timeInterval): #method for creating the graph of a pe
     date3 = date
     y = 6
     ##############################################
-    
     
     channel = "#General"
     persony = False
@@ -66,11 +60,7 @@ def activityVisual(person, timeInterval): #method for creating the graph of a pe
     
         date = list(filter(None, date))
     
-    
     date1 = date
-    
-    
-    
     
     
     
@@ -86,14 +76,11 @@ def activityVisual(person, timeInterval): #method for creating the graph of a pe
         
     date1 = unique(date1) #makes a pretty short list of dates in the right order
     
-    
-    
     for i in range(0, len(date1)):
         for key in countDay.keys():
             if(key == date1[i]):
                 dateDict.update({date1[i]:countDay.get(key)})
 
-    
     plt.bar(range(len(dateDict)), list(dateDict.values()), align = 'center')
     plt.xticks(range(len(dateDict)), list(dateDict.keys()))
     plt.title(person + "'s Number of Messages in " + channel +" Per " + timeInterval, fontsize = 12)
@@ -102,11 +89,7 @@ def activityVisual(person, timeInterval): #method for creating the graph of a pe
 
     
 def wordAnalysis(person1): #method for finding distinctive words
-   
-    
-
-    
-    date10 =df.Date
+    date10 = df.Date
     lengthy = len(date10) # length number
     commonWords = ["", "nan","a", "able", "about", "across", "after", "all", "almost", "also", "am", "among", "an", "and", "any", "are", "as", "at", "be", "because", "been", "but", "by", "can", "cannot", "could", "dear", "did", "do", "does", "either", "else", "ever", "every", "for", "from", "get", "got", "had", "has", "have", "he", "her", "hers", "him", "his", "how", "however", "i", "if", "in", "into", "is", "it", "its", "just", "least", "let", "like", "likely", "may", "me", "might", "most", "must", "my", "neither", "no", "nor", "not", "of", "off", "often", "on", "only", "or", "other", "our", "own", "rather", "said", "say", "says", "she", "should", "since", "so", "some", "than", "that", "the", "their", "them", "then", "there", "these", "they", "this", "tis", "to", "too", "twas", "us", "wants", "was", "we", "were", "what", "when", "where", "which", "while", "who", "whom", "why", "will", "with", "would", "yet", "you", "your", "ain't", "aren't", "can't", "could've", "couldn't", "didn't", "doesn't", "don't", "hasn't", "he'd", "he'll", "he's", "how'd", "how'll", "how's", "i'd", "i'll", "i'm", "i've", "isn't", "it's", "might've", "mightn't", "must've", "mustn't", "shan't", "she'd", "she'll", "she's", "should've", "shouldn't", "that'll", "that's", "there's", "they'd", "they'll", "they're", "they've", "wasn't", "we'd", "we'll", "we're", "weren't", "what'd", "what's", "when'd", "when'll", "when's", "where'd", "where'll", "where's", "who'd", "who'll", "who's", "why'd", "why'll", "why's", "won't", "would've", "wouldn't", "you'd", "you'll", "you're", "you've"]
     countperson1 = {}
@@ -121,7 +104,6 @@ def wordAnalysis(person1): #method for finding distinctive words
     totalcount = Counter()
     count1Speaks = 0
         
-        
     name = df.Author #authors stored in list
     content = df.Content #messages stored in list, index matches
     content.tolist()  
@@ -133,15 +115,14 @@ def wordAnalysis(person1): #method for finding distinctive words
     namesLowercase = [] #array of lowercasenames
     contentLowercase = [] #array of lowercasecontent
     for i in name:
-    
         lower_name = i.lower()
         namesLowercase.append(lower_name) #lowercases
-        
+    
     for i in content:
         i = str(i)
         lower_content = i.lower()
         contentLowercase.append(lower_content) #lowercases
-        
+
     for i in range(0,length): #creates a seperate list for each person
         if namesLowercase[i] == person1 and "http" not in namesLowercase[i]:
             stringList1.append(contentLowercase[i])
@@ -175,25 +156,25 @@ def wordAnalysis(person1): #method for finding distinctive words
         for key2 in totalcount.keys():
             if (key == key2):
                 newercounts1[key] = (newcounts1[key] / totalcount[key]) * (totalSpeaks / count1Speaks)*1000 
-    
-                                        
-                                                
+
+
     for key in newercounts1.keys():
         for word in commonWords:
             if( key == word or key.find("http") == 0 or key.find("xe") != -1 or key.find("\\") != -1):
                 newercounts1[key] = 0
-                
     
     
     newercounts1 = { k:v for k, v in newercounts1.items() if v >20}
-                                                            
+
     for value in newercounts1:
         for k, v in newercounts1.items():
             newercounts1[k] = round(v)
     
-    testCounter = Counter(newercounts1)   
-    return(testCounter.most_common())    
+    testCounter = Counter(newercounts1)
+    return(testCounter.most_common())
+
 bot =commands.Bot(command_prefix="holden ")
+
 
 @bot.event
 async def on_ready():
@@ -234,6 +215,7 @@ async def stalkServer(ctx):
     activityVisual("server")
     await bot.send_file(ctx.message.channel,"E:\\Python\Discord bot\\Pictures\\picture.png") 
     
+
 @bot.command(pass_context = True)    
 async def whois(ctx, user: discord.Member):
     embed = discord.Embed(title="{}'s info".format(user.name), description="Here's what I could find.", color=0x00ff00)
@@ -246,6 +228,7 @@ async def whois(ctx, user: discord.Member):
     embed.set_thumbnail(url=user.avatar_url)
     await bot.say(embed=embed)    
     
+
 @bot.command(pass_context=True)
 async def serverinfo(ctx):
     embed = discord.Embed(name="{}'s info".format(ctx.message.server.name), description="Here's what I could find.", color=0x00ff00)
@@ -266,6 +249,7 @@ async def blend(ctx):
 @bot.command(pass_context=True)
 async def pls(ctx):
     await bot.say("I'M SORRY, THEY MADE ME DO IT") 
+
 
 @bot.command(pass_context=True)
 async def code(ctx):
@@ -301,15 +285,18 @@ async def rate(ctx):
     if x == 11:
         await bot.say("no")
        
+
 @bot.command(pass_context=True)
 async def marissa(ctx):
     await bot.say("m'risa")
     await bot.say("*tips fedora*")
     
+
 @bot.command(pass_context=True)
 async def lerk(ctx):
     await bot.say("banned")
     
+
 @bot.command(pass_context=True)
 async def leg(ctx):
     await bot.say("https://thumbs.dreamstime.com/b/hairy-leg-17861352.jpg")
@@ -319,6 +306,7 @@ async def leg(ctx):
 async def sleep(ctx):
     await bot.say("no u")
     
+
 @bot.command(pass_context=True)
 async def words(ctx):
     await bot.say("Number beside words =/= # of times you said a word. It is a weighted value of the distinctiveness of a word relative to the amount of times you've said it/ the number of time other people have said it.")
@@ -359,13 +347,16 @@ async def snowfish(ctx):
 async def why(ctx):
     await bot.say("Why not?")
     
+
 @bot.command(pass_context=True)
 async def cat(ctx):
     await bot.say("https://media1.tenor.com/images/fff400ed54a68629210f414b79df0e73/tenor.gif?itemid=3532340") 
     
+
 @bot.command(pass_context=True)
 async def attack(ctx):
     await bot.say("https://i.imgur.com/SYx9WXe.gifv") 
+
 
 @bot.command(pass_context=True)
 async def bun(ctx):
