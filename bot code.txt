@@ -266,6 +266,12 @@ async def blend(ctx):
 @bot.command(pass_context=True)
 async def pls(ctx):
     await bot.say("I'M SORRY, THEY MADE ME DO IT") 
+
+@bot.command(pass_context=True)
+async def code(ctx):
+    await bot.say("<https://github.com/Lennnoxy/Mecha_Holden>")
+    await bot.say("https://images-gmi-pmc.edge-generalmills.com/8890dc0a-ec93-4adf-b496-d6b264b56818.jpg")
+    
     
 @bot.command(pass_context=True)
 async def rate(ctx):
