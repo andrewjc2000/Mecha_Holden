@@ -201,7 +201,10 @@ async def stalkday(ctx, user: discord.Member):
     await bot.send_file(ctx.message.channel,"E:\\Python\\Discord bot\\Pictures\\picture.png")
     await bot.say("Their most distinctive words are: " + str(wordAnalysis(user.name + "#" + user.discriminator)))
     
-
+@bot.command(pass_context=True)
+async def thot(ctx):
+    await bot.say("https://i.imgur.com/gALAr9A.png")
+    
 @bot.command(pass_context = True)
 async def stalk(ctx, user: discord.Member):
     activityVisual(user.name + "#" + user.discriminator, "Month")
