@@ -12,7 +12,7 @@ And if you guys want me to add commands, just PM me the code and I'll shove it i
 
 "But Lennox! GitHub exists to avoid that exact scenario!"
 
-fair point. Maybe I should just learn how to use this. 
+fair point. Maybe I should just learn how to use this thing. 
 
 
 
