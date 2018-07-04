@@ -92,10 +92,7 @@ def activityVisual(person, timeInterval): #method for creating the graph of a pe
         for key in countDay.keys():
             if(key == date1[i]):
                 dateDict.update({date1[i]:countDay.get(key)})
-    # for value in dateDict.values():
-    #     totalMessages = totalMessages + value
-    # averageMessages = totalMessages / len(date1)
-    # print (averageMessages)
+
     
     plt.bar(range(len(dateDict)), list(dateDict.values()), align = 'center')
     plt.xticks(range(len(dateDict)), list(dateDict.keys()))
@@ -107,13 +104,7 @@ def activityVisual(person, timeInterval): #method for creating the graph of a pe
 def wordAnalysis(person1): #method for finding distinctive words
    
     
-    #print(df.Content.iloc[2])
-    
-    #for i in range(0,lengthy):
-    #    tempword = df.Content.iloc[i]
-    #    tempword = str(tempword)
-    #    if tempword.find("http:") != -1:
-    #        df.drop(df.index[i])
+
     
     date10 =df.Date
     lengthy = len(date10) # length number
