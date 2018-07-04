@@ -325,7 +325,7 @@ async def wisdom(ctx):
     if x == 11:
         await bot.say("Doing a job *right* the first time gets the job done. Doing the job *wrong* fourteen times gives you job security.")
     if x == 5:
-        await bot.say("If at first you dont succeed, try majoring in business instead.")
+        await bot.say("If at first you don't succeed, try majoring in business instead.")
     if x == 6:
         await bot.say("The early bird may get the worm, but the second mouse gets the cheese.")
     if x == 7:
