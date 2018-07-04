@@ -1,6 +1,6 @@
 # Mecha Holden
 
-To function, this bot required server chatlog files created by DiscordChatExporter, a 3rd party program.
+To function, this bot requires server chatlog files created by DiscordChatExporter, a 3rd party program.
 https://github.com/Tyrrrz/DiscordChatExporter
 
 However, it should function with the log currently stored as GT22.csv
