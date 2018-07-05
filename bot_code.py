@@ -262,29 +262,23 @@ async def code(ctx):
 @bot.command(pass_context=True)
 async def rate(ctx):
     x = randint(0,11)
-    if x == 0:
-        await bot.say("Worse than writing college essays in wet socks. " + str(x) + "/10")
-    if x == 2:
-        await bot.say("Absolutely disgusting. " + str(x) + "/10")
-    if x == 3:
-        await bot.say("Not a fan. " + str(x) + "/10")
-    if x == 1:
-        await bot.say("Makes me want to die. " + str(x) + "/10")
-    if x == 4:
-        await bot.say("Meh. " + str(x) + "/10")
-    if x == 5:
-        await bot.say("Tolerable, I suppose " + str(x) + "/10")
-    if x == 6:
-        await bot.say("Probably worth at least a dollar. " + str(x) + "/10")
-    if x == 7:
-        await bot.say("Preeeeeeeetty good. " + str(x) + "/10")
-    if x == 8:
-        await bot.say("What a glorious specimen. " + str(x) + "/10")
-    if x == 9:
-        await bot.say("The best thing since sliced bread. " + str(x) + "/10")
-    if x == 10:
-        await bot.say("*screeches*. " + str(x) + "/10")
-    if x == 11:
+
+    if x <= 10:
+        text = [
+            "Worse than writing college essays in wet socks. ",
+            "Absolutely disgusting. ",
+            "Not a fan. ",
+            "Makes me want to die. ",
+            "Meh. ",
+            "Tolerable, I suppose. ",
+            "Probably worth at least a dollar. ",
+            "Preeeeeeeetty good. ",
+            "What a glorious specimen. ",
+            "The best thing since sliced bread. ",
+            "*screeches*. "
+        ]
+        await bot.say(text[x] + str(x) + "/10")
+    else:
         await bot.say("no")
        
 
